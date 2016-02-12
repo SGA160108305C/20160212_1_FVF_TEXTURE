@@ -22,7 +22,7 @@ private:
 
 	float camRotX = 0.0f;		//radian
 	float camRotY = 0.0f;
-	float camDistance = 4.5f;
+	float camDistance = 10.0f;
 	
 	bool isDrag = false;
 	POINT prevMousePos;
