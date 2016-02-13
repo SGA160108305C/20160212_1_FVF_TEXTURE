@@ -121,7 +121,7 @@ void GameManager::Destroy()
 void GameManager::Loop(double tick)
 {
 	currentTickTime = tick;
-	printf_s("%.3f\n", tick);
+	//printf_s("%.3f\n", tick);
 	Update();
 	Render();
 }
@@ -168,7 +168,7 @@ void GameManager::Render()
 
 	if (robot != nullptr)
 	{
-		robot->Render();
+		robot->Render(camera->GetViewMatrix(), camera->GetProjectionMatrix());
 	}
 
 	//GameState ±×¸®±â

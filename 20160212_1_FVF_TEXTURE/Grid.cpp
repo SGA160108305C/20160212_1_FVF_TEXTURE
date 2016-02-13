@@ -72,27 +72,27 @@ void Grid::Render(const D3DXMATRIXA16& view, const D3DXMATRIXA16& projection)
 
 	D3DXMATRIXA16 world, rot, trans;
 	D3DXMatrixIdentity(&world);
-	/*D3DXMatrixRotationZ(&rot, D3DXToRadian(80.0f));
-	world *= rot;
-	D3DXMatrixTranslation(&trans, 2, 0, 0);
-	world *= trans;*/
 	world = world * view * projection;
+
 	GameManager::GetDevice()->SetTransform(D3DTS_WORLD, &world);
+	GameManager::GetDevice()->SetTexture(0, nullptr);
 
 	FVF_PositionColor lineVertex[4];
 
-	lineVertex[0].pos = D3DXVECTOR3(-10, 0, 20);
-	lineVertex[0].color = D3DCOLOR_XRGB(255, 0, 0);
-	lineVertex[1].pos = D3DXVECTOR3(10, 0, 20);
-	lineVertex[1].color = D3DCOLOR_XRGB(0, 255, 0);
-	lineVertex[2].pos = D3DXVECTOR3(-10, 0, 10);
-	lineVertex[2].color = D3DCOLOR_XRGB(0, 0, 255);
-	lineVertex[3].pos = D3DXVECTOR3(-10, 0, 10);
-	lineVertex[3].color = D3DCOLOR_XRGB(0, 0, 255);
+	lineVertex[0].pos = D3DXVECTOR3(-10, 0, 2);
+	lineVertex[0].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[1].pos = D3DXVECTOR3(10, 0, 2);
+	lineVertex[1].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[2].pos = D3DXVECTOR3(-10, 0, 1);
+	lineVertex[2].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[3].pos = D3DXVECTOR3(10, 0, 1);
+	lineVertex[3].color = D3DCOLOR_XRGB(128, 128, 128);
 
+	GameManager::GetDevice()->SetFVF(FVF_PositionColor::FVF);
 	GameManager::GetDevice()->DrawPrimitiveUP(
 		D3DPT_LINELIST,
 		2,
 		lineVertex,
-		sizeof(FVF_PositionColor));
+		sizeof(FVF_PositionColor)
+		);
 }

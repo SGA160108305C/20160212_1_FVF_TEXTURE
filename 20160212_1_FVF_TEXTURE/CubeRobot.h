@@ -9,7 +9,7 @@ public:
 	void Initialize();
 	void Destroy();
 	void Update();
-	void Render();
+	void Render(const D3DXMATRIXA16& view, const D3DXMATRIXA16& projection);
 
 	LRESULT RobotInputProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 	D3DXVECTOR3* getRobotPosition() { return &position; }
@@ -17,21 +17,17 @@ public:
 	float* getYradian() { return &yRadian; }
 
 protected:
-	float rotationAxisX = 0.0f;
-	float rotationAxisY = 0.0f;
-
-	D3DXMATRIXA16 world, rot, trans;
+	D3DXMATRIXA16 world, rotX, rotY, rotZ, trans;
 
 	bool mouseDown = false;
 	POINT mouseStart;
 
 	float xRadian = 0.0f;
 	float yRadian = 0.0f;
+	float zRadian = 0.0f;
 
-	float modelY = 3.0f;
-
-	D3DXVECTOR3 direction = D3DXVECTOR3(0, modelY, 1);
-	D3DXVECTOR3 position = D3DXVECTOR3(0, 3, 0);
+	D3DXVECTOR3 direction = D3DXVECTOR3(0, 0, 1);
+	D3DXVECTOR3 position = D3DXVECTOR3(0, 0, 0);
 
 	float jumpAngle = D3DX_PI / 0.5f;
 	float jumpSpeed = 0.07f;

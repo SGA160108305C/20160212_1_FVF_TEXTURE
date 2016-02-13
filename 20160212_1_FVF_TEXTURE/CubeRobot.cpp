@@ -26,10 +26,11 @@ void CubeRobot::Destroy()
 	SAFE_RELEASE(texture);
 }
 
-void CubeRobot::Render()
+void CubeRobot::Render(const D3DXMATRIXA16& view, const D3DXMATRIXA16& projection)
 {
-	D3DXMatrixIdentity(&world);
+	world *= view * projection;
 	GameManager::GetDevice()->SetTransform(D3DTS_WORLD, &world);
+	GameManager::GetDevice()->SetTexture(0, texture);
 
 	FVF_PositionColorTexture vertexT[36];
 	D3DCOLOR color = D3DCOLOR_XRGB(255, 255, 255);
@@ -160,7 +161,6 @@ void CubeRobot::Render()
 	vertexT[35].color = color;
 	vertexT[35].tex = D3DXVECTOR2(1, 1);
 
-	GameManager::GetDevice()->SetTexture(0, texture);
 	GameManager::GetDevice()->SetFVF(FVF_PositionColorTexture::FVF);
 	GameManager::GetDevice()->DrawPrimitiveUP(
 		D3DPT_TRIANGLELIST,
@@ -173,32 +173,32 @@ void CubeRobot::Update()
 {
 	if (KEYMANAGER->isStayKeyDown('W'))
 	{
-		position += direction * 0.01f;
+		position += direction * 0.05f;
 	}
 
 	if (KEYMANAGER->isStayKeyDown('S'))
 	{
-		position -= direction * 0.01f;
+		position -= direction * 0.05f;
 	}
 
 	if (KEYMANAGER->isStayKeyDown('Q'))
 	{
-		xRadian -= 0.001f;
+		xRadian -= 0.05f;
 	}
 
 	if (KEYMANAGER->isStayKeyDown('E'))
 	{
-		xRadian += 0.001f;
+		xRadian += 0.05f;
 	}
 
 	if (KEYMANAGER->isStayKeyDown('A'))
 	{
-		yRadian -= 0.001f;
+		yRadian -= 0.05f;
 	}
 
 	if (KEYMANAGER->isStayKeyDown('D'))
 	{
-		yRadian += 0.001f;
+		yRadian += 0.05f;
 	}
 
 	if (KEYMANAGER->isStayKeyDown(VK_SPACE))
@@ -212,25 +212,25 @@ void CubeRobot::Update()
 		position.y -= -sinf(jumpAngle) * jumpSpeed - gravity;
 		gravity -= 0.0007f;
 
-		if (position.y < modelY)
+		if (position.y < 0)
 		{
-			position.y = modelY;
+			position.y = 0;
 			gravity = 0.0f;
 			hasRobotJumped = false;
 		}
 	}
 
-	D3DXMATRIXA16 rotY;
-	D3DXMatrixRotationY(&rotY, yRadian);
-
-	D3DXMATRIXA16 rotX;
-	D3DXMatrixRotationX(&rotX, xRadian);
-
 	D3DXMatrixIdentity(&world);
-	world = world * rotX * rotY;
-	D3DXVec3TransformCoord(&direction, &direction, &world);
+
+	D3DXMatrixRotationX(&rotX, xRadian);
+	D3DXMatrixRotationY(&rotY, yRadian);
+	D3DXMatrixRotationZ(&rotZ, zRadian);
+	world *= rotX * rotY * rotZ;
+
+	D3DXVec3TransformCoord(&direction, &D3DXVECTOR3(0, 0, 1), &world);
 
 	D3DXMatrixTranslation(&trans, position.x, position.y, position.z);
+	printf_s("positionX: %.2f / positionY: %.2f / positionZ: %.2f\n", position.x, position.y, position.z);
 	world = world * trans;
 
 }
