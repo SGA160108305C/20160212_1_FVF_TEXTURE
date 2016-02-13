@@ -171,6 +171,22 @@ void GameState_FVF::Render()
 		vertexT,
 		sizeof(FVF_PositionColorTexture));
 	
+	D3DXMatrixIdentity(&world);
+	GameManager::GetDevice()->SetTransform(D3DTS_WORLD, &world);
+	FVF_PositionColor lineVertex[4];
+	lineVertex[0].pos = D3DXVECTOR3(10, 0, 0);
+	lineVertex[0].color = D3DCOLOR_XRGB(255, 0, 0);
+	lineVertex[1].pos = D3DXVECTOR3(10, 10, 0);
+	lineVertex[1].color = D3DCOLOR_XRGB(0, 255, 0);
+	lineVertex[2].pos = D3DXVECTOR3(20, 10, 0);
+	lineVertex[2].color = D3DCOLOR_XRGB(0, 0, 255);
+	lineVertex[3].pos = D3DXVECTOR3(20, 0, 0);
+	lineVertex[3].color = D3DCOLOR_XRGB(0, 0, 255);
+	GameManager::GetDevice()->DrawPrimitiveUP(
+		D3DPT_LINELIST,
+		2,
+		lineVertex,
+		sizeof(FVF_PositionColor));
 }
 
 void GameState_FVF::OnEnterState()

@@ -16,14 +16,11 @@ void Camera::Initialize(D3DXVECTOR3* target /*= nullptr*/)
 {
 	lookTarget = target;
 
-	D3DXMATRIXA16 matView;
-	D3DXMATRIXA16 matProjection;
 	D3DXMatrixLookAtLH(&matView, &eyePosition, &lookAt, &upVector);
 	GameManager::GetDevice()->SetTransform(D3DTS_VIEW, &matView);
 
 	D3DXMatrixPerspectiveFovLH(&matProjection, D3DX_PI * 0.25f, (float)RESOLUTION_X / (float)RESOLUTION_Y, 1.0f, 10000.0f);
 	GameManager::GetDevice()->SetTransform(D3DTS_PROJECTION, &matProjection);
-
 }
 
 void Camera::Destroy()
@@ -47,7 +44,6 @@ void Camera::Update()
 		eyePosition = (*lookTarget) + eyePosition;
 	}
 
-	D3DXMATRIXA16 matView;
 	D3DXMatrixLookAtLH(&matView, &eyePosition, &lookAt, &upVector);
 	GameManager::GetDevice()->SetTransform(D3DTS_VIEW, &matView);
 

@@ -65,6 +65,14 @@ void GameManager::Initialize(HWND handle)
 	camera = new Camera;
 	camera->Initialize();
 
+	if (grid != nullptr)
+	{
+		delete grid;
+		grid = nullptr;
+	}
+	grid = new Grid();
+	grid->Initialize();
+
 	//랜덤 초기화
 	RandomUtil::Initialize();
 	
@@ -75,6 +83,7 @@ void GameManager::Initialize(HWND handle)
 
 void GameManager::Destroy()
 {
+	SAFE_DELETE(grid);
 	//카메라 제거
 	SAFE_DELETE(camera);
 
@@ -128,6 +137,11 @@ void GameManager::Render()
 	direct3dDevice->BeginScene();
 
 	// 그림 그리기 -------------------------------------------------
+
+	if (grid != nullptr)
+	{
+		grid->Render(mainCamera->GetViewMatrix(), mainCamera->GetProjectionMatrix(), g_GameManager.GetViewPortMatrix());
+	}
 
 	//GameState 그리기
 	GameStateManager::Get().Render();

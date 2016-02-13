@@ -88,6 +88,7 @@
     <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="GameState_DX_Base.cpp" />
     <ClCompile Include="GameState_FVF.cpp" />
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RandomUtil.cpp" />
     <ClCompile Include="stdafx.cpp" />
@@ -100,6 +101,7 @@
     <ClInclude Include="GameStateManager.h" />
     <ClInclude Include="GameState_DX_Base.h" />
     <ClInclude Include="GameState_FVF.h" />
+    <ClInclude Include="Grid.h" />
     <ClInclude Include="MemoryLeakCheck.h" />
     <ClInclude Include="RandomUtil.h" />
     <ClInclude Include="stdafx.h" />

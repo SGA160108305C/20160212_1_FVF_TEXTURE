@@ -3,6 +3,7 @@
 #include <time.h>
 
 #include "Camera.h"
+#include "Grid.h"
 
 
 class GameManager
@@ -39,6 +40,7 @@ protected:
 	LPDIRECT3DDEVICE9 direct3dDevice = nullptr;
 		
 	Camera* camera = nullptr;
+	Grid* grid = nullptr;
 	
 	void Update();
 	void Render();
