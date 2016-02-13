@@ -53,12 +53,9 @@ void Grid::Destroy()
 	lines.clear();
 }
 
-void Grid::Render(HDC targetDC,
-	const D3DXMATRIXA16& view,
-	const D3DXMATRIXA16& projection,
-	const D3DXMATRIXA16& viewport)
+void Grid::Render(const D3DXMATRIXA16& view, const D3DXMATRIXA16& projection)
 {
-	D3DXMATRIXA16 pipeline = view * projection * viewport;
+	/*D3DXMATRIXA16 pipeline = view * projection * viewport;
 	for (auto iter = lines.cbegin(); iter != lines.cend(); ++iter)
 	{
 		D3DXVECTOR3 start = (*iter).start;
@@ -71,5 +68,30 @@ void Grid::Render(HDC targetDC,
 		MoveToEx(targetDC, (int)start.x, (int)start.y, nullptr);
 		LineTo(targetDC, (int)end.x, (int)end.y);
 		SetDCPenColor(targetDC, oldColor);
-	}
+	}*/
+
+	D3DXMATRIXA16 world, rot, trans;
+	D3DXMatrixIdentity(&world);
+	/*D3DXMatrixRotationZ(&rot, D3DXToRadian(80.0f));
+	world *= rot;
+	D3DXMatrixTranslation(&trans, 2, 0, 0);
+	world *= trans;*/
+	GameManager::GetDevice()->SetTransform(D3DTS_WORLD, &world);
+
+	D3DXMatrixIdentity(&world);
+	GameManager::GetDevice()->SetTransform(D3DTS_WORLD, &world);
+	FVF_PositionColor lineVertex[4];
+	lineVertex[0].pos = D3DXVECTOR3(10, 0, 0);
+	lineVertex[0].color = D3DCOLOR_XRGB(255, 0, 0);
+	lineVertex[1].pos = D3DXVECTOR3(10, 10, 0);
+	lineVertex[1].color = D3DCOLOR_XRGB(0, 255, 0);
+	lineVertex[2].pos = D3DXVECTOR3(20, 10, 0);
+	lineVertex[2].color = D3DCOLOR_XRGB(0, 0, 255);
+	lineVertex[3].pos = D3DXVECTOR3(20, 0, 0);
+	lineVertex[3].color = D3DCOLOR_XRGB(0, 0, 255);
+	GameManager::GetDevice()->DrawPrimitiveUP(
+		D3DPT_LINELIST,
+		2,
+		lineVertex,
+		sizeof(FVF_PositionColor));
 }

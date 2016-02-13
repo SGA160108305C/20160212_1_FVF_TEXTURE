@@ -65,6 +65,7 @@ void GameManager::Initialize(HWND handle)
 	camera = new Camera;
 	camera->Initialize();
 
+	//initialize grid
 	if (grid != nullptr)
 	{
 		delete grid;
@@ -83,7 +84,9 @@ void GameManager::Initialize(HWND handle)
 
 void GameManager::Destroy()
 {
+	//delete grid
 	SAFE_DELETE(grid);
+
 	//카메라 제거
 	SAFE_DELETE(camera);
 
@@ -138,9 +141,10 @@ void GameManager::Render()
 
 	// 그림 그리기 -------------------------------------------------
 
+	//render grid
 	if (grid != nullptr)
 	{
-		grid->Render(mainCamera->GetViewMatrix(), mainCamera->GetProjectionMatrix(), g_GameManager.GetViewPortMatrix());
+		grid->Render(camera->GetViewMatrix(), camera->GetProjectionMatrix());
 	}
 
 	//GameState 그리기

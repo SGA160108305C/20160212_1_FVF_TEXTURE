@@ -30,7 +30,7 @@ public:
 
 	void Initialize(int lineCount = 10, float interval = 1.0f);
 	void Destroy();
-	void Render(const D3DXMATRIXA16& view, const D3DXMATRIXA16& projection, const D3DXMATRIXA16& viewport);
+	void Render(const D3DXMATRIXA16& view, const D3DXMATRIXA16& projection);
 
 private:
 	std::list<Line> lines;
