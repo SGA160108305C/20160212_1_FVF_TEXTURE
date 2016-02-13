@@ -4,6 +4,7 @@
 
 #include "Camera.h"
 #include "Grid.h"
+#include "CubeRobot.h"
 
 
 class GameManager
@@ -39,6 +40,7 @@ protected:
 	LPDIRECT3D9 direct3d = nullptr;
 	LPDIRECT3DDEVICE9 direct3dDevice = nullptr;
 		
+	CubeRobot* robot = nullptr;
 	Camera* camera = nullptr;
 	Grid* grid = nullptr;
 	

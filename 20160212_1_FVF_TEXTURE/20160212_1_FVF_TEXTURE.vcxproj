@@ -84,17 +84,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CubeRobot.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="GameState_DX_Base.cpp" />
     <ClCompile Include="GameState_FVF.cpp" />
     <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="keyManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RandomUtil.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CubeRobot.h" />
     <ClInclude Include="FVF.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameState.h" />
@@ -102,8 +105,10 @@
     <ClInclude Include="GameState_DX_Base.h" />
     <ClInclude Include="GameState_FVF.h" />
     <ClInclude Include="Grid.h" />
+    <ClInclude Include="keyManager.h" />
     <ClInclude Include="MemoryLeakCheck.h" />
     <ClInclude Include="RandomUtil.h" />
+    <ClInclude Include="singletonBase.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

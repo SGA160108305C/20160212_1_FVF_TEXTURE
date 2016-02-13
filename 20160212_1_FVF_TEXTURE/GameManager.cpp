@@ -61,9 +61,18 @@ void GameManager::Initialize(HWND handle)
 		return;
 	}
 		
+	//initialize robot
+	if (robot != nullptr)
+	{
+		delete robot;
+		robot = nullptr;
+	}
+	robot = new CubeRobot();
+	robot->Initialize();
+
 	//카메라 생성
 	camera = new Camera;
-	camera->Initialize();
+	camera->Initialize(robot->getRobotPosition());
 
 	//initialize grid
 	if (grid != nullptr)
@@ -84,11 +93,16 @@ void GameManager::Initialize(HWND handle)
 
 void GameManager::Destroy()
 {
+	KEYMANAGER->releaseSingleton();
+
 	//delete grid
 	SAFE_DELETE(grid);
 
 	//카메라 제거
 	SAFE_DELETE(camera);
+
+	//delete robot
+	SAFE_DELETE(robot);
 
 	//GameState들 정리
 	GameStateManager::Get().Destroy();		
@@ -114,7 +128,12 @@ void GameManager::Loop(double tick)
 
 void GameManager::Update()
 {
-		
+	//robot update
+	if (robot)
+	{
+		robot->Update();
+	}
+
 	//카메라 업데이트
 	if ( camera )
 	{
@@ -147,6 +166,11 @@ void GameManager::Render()
 		grid->Render(camera->GetViewMatrix(), camera->GetProjectionMatrix());
 	}
 
+	if (robot != nullptr)
+	{
+		robot->Render();
+	}
+
 	//GameState 그리기
 	GameStateManager::Get().Render();
 
@@ -164,6 +188,10 @@ LRESULT GameManager::GameInputProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
 	if ( result == 0 && camera )
 	{
 		camera->CameraInputProc(hWnd, message, wParam, lParam);
+	}
+	if (result == 0 && robot)
+	{
+		robot->RobotInputProc(hWnd, message, wParam, lParam);
 	}
 	if ( result == 0 )
 	{

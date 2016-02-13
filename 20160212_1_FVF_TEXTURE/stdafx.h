@@ -25,6 +25,9 @@
 #pragma comment(lib, "winmm.lib")
 #pragma comment(linker, "/entry:WinMainCRTStartup /subsystem:console")
 
+#include "keyManager.h"
+#define KEYMANAGER keyManager::getSingleton()
+
 LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);
 
 static const WCHAR WINDOW_CLASS_NAME[] = L"Win32App";
