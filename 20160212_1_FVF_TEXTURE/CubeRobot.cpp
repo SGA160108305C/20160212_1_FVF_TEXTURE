@@ -195,12 +195,12 @@ void CubeRobot::Update()
 
 	if (KEYMANAGER->isStayKeyDown('A'))
 	{
-		yRadian -= 0.05f;
+		yRadian -= 0.01f;
 	}
 
 	if (KEYMANAGER->isStayKeyDown('D'))
 	{
-		yRadian += 0.05f;
+		yRadian += 0.01f;
 	}
 
 	if (KEYMANAGER->isStayKeyDown(VK_SPACE))

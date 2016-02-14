@@ -78,21 +78,122 @@ void Grid::Render(const D3DXMATRIXA16& view, const D3DXMATRIXA16& projection)
 	GameManager::GetDevice()->SetTransform(D3DTS_WORLD, &world);
 	GameManager::GetDevice()->SetTexture(0, nullptr);
 
-	FVF_PositionColor lineVertex[4];
+	FVF_PositionColor lineVertex[44];
 
-	lineVertex[0].pos = D3DXVECTOR3(-10, 0, 2);
+	lineVertex[0].pos = D3DXVECTOR3(-10, 0, -10);
 	lineVertex[0].color = D3DCOLOR_XRGB(128, 128, 128);
-	lineVertex[1].pos = D3DXVECTOR3(10, 0, 2);
+	lineVertex[1].pos = D3DXVECTOR3(10, 0, -10);
 	lineVertex[1].color = D3DCOLOR_XRGB(128, 128, 128);
-	lineVertex[2].pos = D3DXVECTOR3(-10, 0, 1);
+
+	lineVertex[2].pos = D3DXVECTOR3(-10, 0, -8);
 	lineVertex[2].color = D3DCOLOR_XRGB(128, 128, 128);
-	lineVertex[3].pos = D3DXVECTOR3(10, 0, 1);
+	lineVertex[3].pos = D3DXVECTOR3(10, 0, -8);
 	lineVertex[3].color = D3DCOLOR_XRGB(128, 128, 128);
+
+	lineVertex[4].pos = D3DXVECTOR3(-10, 0, -6);
+	lineVertex[4].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[5].pos = D3DXVECTOR3(10, 0, -6);
+	lineVertex[5].color = D3DCOLOR_XRGB(128, 128, 128);
+
+	lineVertex[6].pos = D3DXVECTOR3(-10, 0, -4);
+	lineVertex[6].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[7].pos = D3DXVECTOR3(10, 0, -4);
+	lineVertex[7].color = D3DCOLOR_XRGB(128, 128, 128);
+
+	lineVertex[8].pos = D3DXVECTOR3(-10, 0, -2);
+	lineVertex[8].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[9].pos = D3DXVECTOR3(10, 0, -2);
+	lineVertex[9].color = D3DCOLOR_XRGB(128, 128, 128);
+
+	lineVertex[10].pos = D3DXVECTOR3(-10, 0, 0);
+	lineVertex[10].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[11].pos = D3DXVECTOR3(10, 0, 0);
+	lineVertex[11].color = D3DCOLOR_XRGB(128, 128, 128);
+
+	lineVertex[12].pos = D3DXVECTOR3(-10, 0, 2);
+	lineVertex[12].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[13].pos = D3DXVECTOR3(10, 0, 2);
+	lineVertex[13].color = D3DCOLOR_XRGB(128, 128, 128);
+
+	lineVertex[14].pos = D3DXVECTOR3(-10, 0, 4);
+	lineVertex[14].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[15].pos = D3DXVECTOR3(10, 0, 4);
+	lineVertex[15].color = D3DCOLOR_XRGB(128, 128, 128);
+
+	lineVertex[16].pos = D3DXVECTOR3(-10, 0, 6);
+	lineVertex[16].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[17].pos = D3DXVECTOR3(10, 0, 6);
+	lineVertex[17].color = D3DCOLOR_XRGB(128, 128, 128);
+
+	lineVertex[18].pos = D3DXVECTOR3(-10, 0, 8);
+	lineVertex[18].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[19].pos = D3DXVECTOR3(10, 0, 8);
+	lineVertex[19].color = D3DCOLOR_XRGB(128, 128, 128);
+
+	lineVertex[20].pos = D3DXVECTOR3(-10, 0, 10);
+	lineVertex[20].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[21].pos = D3DXVECTOR3(10, 0, 10);
+	lineVertex[21].color = D3DCOLOR_XRGB(128, 128, 128);
+
+	lineVertex[22].pos = D3DXVECTOR3(-10, 0, -10);
+	lineVertex[22].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[23].pos = D3DXVECTOR3(-10, 0, 10);
+	lineVertex[23].color = D3DCOLOR_XRGB(128, 128, 128);
+
+	lineVertex[24].pos = D3DXVECTOR3(-8, 0, -10);
+	lineVertex[24].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[25].pos = D3DXVECTOR3(-8, 0, 10);
+	lineVertex[25].color = D3DCOLOR_XRGB(128, 128, 128);
+
+	lineVertex[26].pos = D3DXVECTOR3(-6, 0, -10);
+	lineVertex[26].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[27].pos = D3DXVECTOR3(-6, 0, 10);
+	lineVertex[27].color = D3DCOLOR_XRGB(128, 128, 128);
+
+	lineVertex[28].pos = D3DXVECTOR3(-4, 0, -10);
+	lineVertex[28].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[29].pos = D3DXVECTOR3(-4, 0, 10);
+	lineVertex[29].color = D3DCOLOR_XRGB(128, 128, 128);
+
+	lineVertex[30].pos = D3DXVECTOR3(-2, 0, -10);
+	lineVertex[30].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[31].pos = D3DXVECTOR3(-2, 0, 10);
+	lineVertex[31].color = D3DCOLOR_XRGB(128, 128, 128);
+
+	lineVertex[32].pos = D3DXVECTOR3(0, 0, -10);
+	lineVertex[32].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[33].pos = D3DXVECTOR3(0, 0, 10);
+	lineVertex[33].color = D3DCOLOR_XRGB(128, 128, 128);
+
+	lineVertex[34].pos = D3DXVECTOR3(2, 0, -10);
+	lineVertex[34].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[35].pos = D3DXVECTOR3(2, 0, 10);
+	lineVertex[35].color = D3DCOLOR_XRGB(128, 128, 128);
+
+	lineVertex[36].pos = D3DXVECTOR3(4, 0, -10);
+	lineVertex[36].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[37].pos = D3DXVECTOR3(4, 0, 10);
+	lineVertex[37].color = D3DCOLOR_XRGB(128, 128, 128);
+
+	lineVertex[38].pos = D3DXVECTOR3(6, 0, -10);
+	lineVertex[38].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[39].pos = D3DXVECTOR3(6, 0, 10);
+	lineVertex[39].color = D3DCOLOR_XRGB(128, 128, 128);
+
+	lineVertex[40].pos = D3DXVECTOR3(8, 0, -10);
+	lineVertex[40].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[41].pos = D3DXVECTOR3(8, 0, 10);
+	lineVertex[41].color = D3DCOLOR_XRGB(128, 128, 128);
+
+	lineVertex[42].pos = D3DXVECTOR3(10, 0, -10);
+	lineVertex[42].color = D3DCOLOR_XRGB(128, 128, 128);
+	lineVertex[43].pos = D3DXVECTOR3(10, 0, 10);
+	lineVertex[43].color = D3DCOLOR_XRGB(128, 128, 128);
 
 	GameManager::GetDevice()->SetFVF(FVF_PositionColor::FVF);
 	GameManager::GetDevice()->DrawPrimitiveUP(
 		D3DPT_LINELIST,
-		2,
+		22,
 		lineVertex,
 		sizeof(FVF_PositionColor)
 		);
