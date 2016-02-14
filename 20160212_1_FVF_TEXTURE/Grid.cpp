@@ -70,10 +70,11 @@ void Grid::Render(const D3DXMATRIXA16& view, const D3DXMATRIXA16& projection)
 		SetDCPenColor(targetDC, oldColor);
 	}*/
 
-	D3DXMATRIXA16 world, rot, trans;
+	D3DXMATRIXA16 world;
 	D3DXMatrixIdentity(&world);
-	world = world * view * projection;
 
+	GameManager::GetDevice()->SetTransform(D3DTS_VIEW, &view);
+	GameManager::GetDevice()->SetTransform(D3DTS_PROJECTION, &projection);
 	GameManager::GetDevice()->SetTransform(D3DTS_WORLD, &world);
 	GameManager::GetDevice()->SetTexture(0, nullptr);
 

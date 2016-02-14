@@ -36,8 +36,7 @@ void Camera::Update()
 	matRotation = matRotationX * matRotationY;
 
 	eyePosition = D3DXVECTOR3(0, 0, -camDistance);
-	D3DXVec3TransformCoord(&eyePosition, &D3DXVECTOR3(0, 0, -camDistance), &matRotation);
-	printf_s("x: %.2f / y: %.2f / z: %.2f\n", eyePosition.x, eyePosition.y, eyePosition.z);
+	D3DXVec3TransformCoord(&eyePosition, &eyePosition, &matRotation);
 	if ( lookTarget )
 	{
 		lookAt = (*lookTarget);

@@ -25,9 +25,9 @@ private:
 	D3DXVECTOR3 lookAt = D3DXVECTOR3(0, 0, 0);
 	D3DXVECTOR3 upVector = D3DXVECTOR3(0, 1, 0);
 
-	float camRotX = 0.7f;		//radian
+	float camRotX = D3DXToRadian(45.0f);		//radian
 	float camRotY = 0.0f;
-	float camDistance = 7.0f;
+	float camDistance = 30.0f;
 	
 	bool isDrag = false;
 	POINT prevMousePos;

@@ -28,7 +28,8 @@ void CubeRobot::Destroy()
 
 void CubeRobot::Render(const D3DXMATRIXA16& view, const D3DXMATRIXA16& projection)
 {
-	world *= view * projection;
+	GameManager::GetDevice()->SetTransform(D3DTS_VIEW, &view);
+	GameManager::GetDevice()->SetTransform(D3DTS_PROJECTION, &projection);
 	GameManager::GetDevice()->SetTransform(D3DTS_WORLD, &world);
 	GameManager::GetDevice()->SetTexture(0, texture);
 
@@ -166,7 +167,8 @@ void CubeRobot::Render(const D3DXMATRIXA16& view, const D3DXMATRIXA16& projectio
 		D3DPT_TRIANGLELIST,
 		12,
 		vertexT,
-		sizeof(FVF_PositionColorTexture));
+		sizeof(FVF_PositionColorTexture)
+		);
 }
 
 void CubeRobot::Update()
@@ -181,15 +183,15 @@ void CubeRobot::Update()
 		position -= direction * 0.05f;
 	}
 
-	if (KEYMANAGER->isStayKeyDown('Q'))
-	{
-		xRadian -= 0.05f;
-	}
+	//if (KEYMANAGER->isStayKeyDown('Q'))
+	//{
+	//	xRadian -= 0.05f;
+	//}
 
-	if (KEYMANAGER->isStayKeyDown('E'))
-	{
-		xRadian += 0.05f;
-	}
+	//if (KEYMANAGER->isStayKeyDown('E'))
+	//{
+	//	xRadian += 0.05f;
+	//}
 
 	if (KEYMANAGER->isStayKeyDown('A'))
 	{
@@ -230,9 +232,7 @@ void CubeRobot::Update()
 	D3DXVec3TransformCoord(&direction, &D3DXVECTOR3(0, 0, 1), &world);
 
 	D3DXMatrixTranslation(&trans, position.x, position.y, position.z);
-	printf_s("positionX: %.2f / positionY: %.2f / positionZ: %.2f\n", position.x, position.y, position.z);
 	world = world * trans;
-
 }
 
 LRESULT CubeRobot::RobotInputProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
