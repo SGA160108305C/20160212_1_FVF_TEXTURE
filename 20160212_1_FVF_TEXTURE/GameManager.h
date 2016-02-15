@@ -35,6 +35,9 @@ public:
 protected:
 	bool hasInitialized = false;
 	double currentTickTime = 0.0f;
+	unsigned long FPSFrameCount = 0.0f;
+	float FPSTimeElapsed = 0.0f;
+	int frameRate = 0;
 	
 	HWND windowHandle = nullptr;
 	LPDIRECT3D9 direct3d = nullptr;
@@ -50,5 +53,7 @@ protected:
 	inline LPDIRECT3DDEVICE9 GetInstanceDevice(){ return direct3dDevice; }
 	inline double GetCurrentTick(){ return currentTickTime; }
 	inline Camera* GetInstanceCamera(){ return camera; }
+
+	LPD3DXFONT font = nullptr;
 }; 
 

@@ -780,24 +780,24 @@ void CubeRobot::Initialize()
 
 	//right leg down
 	vertexRightLeg[30].pos = D3DXVECTOR3(rightLegLeft, legBottomY, -legHalfZ);
-	vertexLeftLeg[30].color = color;
-	vertexLeftLeg[30].tex = D3DXVECTOR2(0, 0);
-	vertexLeftLeg[31].pos = D3DXVECTOR3(rightLegLeft + legWidth, legBottomY, legHalfZ);
-	vertexLeftLeg[31].color = color;
-	vertexLeftLeg[31].tex = D3DXVECTOR2(1, 1);
-	vertexLeftLeg[32].pos = D3DXVECTOR3(rightLegLeft, legBottomY, legHalfZ);
-	vertexLeftLeg[32].color = color;
-	vertexLeftLeg[32].tex = D3DXVECTOR2(1, 0);
+	vertexRightLeg[30].color = color;
+	vertexRightLeg[30].tex = D3DXVECTOR2(0, 0);
+	vertexRightLeg[31].pos = D3DXVECTOR3(rightLegLeft + legWidth, legBottomY, legHalfZ);
+	vertexRightLeg[31].color = color;
+	vertexRightLeg[31].tex = D3DXVECTOR2(1, 1);
+	vertexRightLeg[32].pos = D3DXVECTOR3(rightLegLeft, legBottomY, legHalfZ);
+	vertexRightLeg[32].color = color;
+	vertexRightLeg[32].tex = D3DXVECTOR2(1, 0);
 
-	vertexLeftLeg[33].pos = D3DXVECTOR3(rightLegLeft, legBottomY, -legHalfZ);
-	vertexLeftLeg[33].color = color;
-	vertexLeftLeg[33].tex = D3DXVECTOR2(0, 0);
-	vertexLeftLeg[34].pos = D3DXVECTOR3(rightLegLeft + legWidth, legBottomY, -legHalfZ);
-	vertexLeftLeg[34].color = color;
-	vertexLeftLeg[34].tex = D3DXVECTOR2(0, 1);
-	vertexLeftLeg[35].pos = D3DXVECTOR3(rightLegLeft + legWidth, legBottomY, legHalfZ);
-	vertexLeftLeg[35].color = color;
-	vertexLeftLeg[35].tex = D3DXVECTOR2(1, 1);
+	vertexRightLeg[33].pos = D3DXVECTOR3(rightLegLeft, legBottomY, -legHalfZ);
+	vertexRightLeg[33].color = color;
+	vertexRightLeg[33].tex = D3DXVECTOR2(0, 0);
+	vertexRightLeg[34].pos = D3DXVECTOR3(rightLegLeft + legWidth, legBottomY, -legHalfZ);
+	vertexRightLeg[34].color = color;
+	vertexRightLeg[34].tex = D3DXVECTOR2(0, 1);
+	vertexRightLeg[35].pos = D3DXVECTOR3(rightLegLeft + legWidth, legBottomY, legHalfZ);
+	vertexRightLeg[35].color = color;
+	vertexRightLeg[35].tex = D3DXVECTOR2(1, 1);
 }
 
 void CubeRobot::Destroy()
